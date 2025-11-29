@@ -26,7 +26,20 @@ app.post('/customer/customerDetails', async (req, res) => {
     try {
       const data = req.body;
       // const response = await axios.post('https://backend.hyderabad-packers-movers.in/customer/customerDetails', data);
-      const response = await axios.post('http://3.149.6.69:8080/customer/customerDetails', data);
+      const response = await axios.post('http://18.117.167.212:8080/customer/customerDetails', data);
+      // Send the JSON response from Spring Boot to the frontend
+      res.status(200).json(response.data);
+    } catch (error) {
+      console.error("Error communicating with Spring Boot:", error.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+// Proxy route to the backend
+app.post('/customer/customerDetails', async (req, res) => {
+    try {
+      const data = req.body;
+      // const response = await axios.post('https://backend.hyderabad-packers-movers.in/customer/customerDetails', data);
+      const response = await axios.post('http://3.141.169.98:8080/customer/customerDetails', data);
       // Send the JSON response from Spring Boot to the frontend
       res.status(200).json(response.data);
     } catch (error) {
